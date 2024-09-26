@@ -9,35 +9,6 @@
           integrity="sha384-T3c6CoTi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css" />
     <link rel="stylesheet" href="css/style.css">
-    <style>
-        /* Стили для кнопки */
-        .toggle-btn {
-            background-color: #5cb85c; /* Приятный зеленый цвет */
-            color: white;
-            padding: 15px 30px;
-            border: none;
-            border-radius: 8px;
-            font-size: 16px;
-            cursor: pointer;
-        }
-        .toggle-btn:hover {
-            background-color: #4cae4c;
-        }
-        /* Центрирование кнопки */
-        .centered {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            flex-direction: column;
-            min-height: 50vh;
-        }
-        /* Размер картинки */
-        .image-to-toggle {
-            width: 400px;
-            height: auto;
-            display: none; /* Скрыта по умолчанию */
-        }
-    </style>
 </head>
 <body>
     <div class="container my-5">
