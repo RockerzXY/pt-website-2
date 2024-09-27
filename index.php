@@ -16,16 +16,33 @@
 <div class="container">
     <div class="row">
         <div class="col-12 index">
-            <h1>Авторизуйтесь!</h1>
-        <?php
-        if (!isset($_COOKIE['User'])) {
+            <?php
+            if (!isset($_COOKIE['User'])) {
+                echo "<h1>Авторизуйтесь!</h1>";
             ?>
                 <a href="/registration.php">Зарегистрируйтесь</a> или <a href="/login.php">войдите</a>, чтобы просматривать контент!
             <?php
             } else {
-                // подключение к БД
+                echo "<h1>Ваши посты</h1>";
+                $link = mysqli_connect('127.0.0.1', 'root', 'debian', 'first');
+                if (!$link) {
+                    die("Ошибка подключения к базе данных: " . mysqli_connect_error());
+                }
+
+                $sql = "SELECT * FROM posts";
+                $res = mysqli_query($link, $sql);
+
+                if (mysqli_num_rows($res) > 0) {
+                    while ($post = mysqli_fetch_array($res)) {
+                        echo "<a href='/posts.php?id=" . $post["id"] . "'>" . $post['title'] . "</a><br>\n";
+                    }
+                } else {
+                    echo "Записей пока нет";
+                }
+
+                mysqli_close($link);
             }
-        ?>
+            ?>
         </div>
     </div>
 </div>

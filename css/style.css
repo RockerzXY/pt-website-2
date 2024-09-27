@@ -14,6 +14,7 @@ body {
     border-radius: 10px;
     box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
     text-align: center;
+    margin-top: 20px;
 }
 
 h1 {
@@ -61,14 +62,6 @@ ul {
     background-color: #4cae4c;
 }
 
-.centered {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
-    min-height: 50vh;
-}
-
 .image-to-toggle {
     width: 400px;
     height: auto;
@@ -82,4 +75,8 @@ a {
 
 a:hover {
     text-decoration: underline;
+}
+
+.row {
+    margin-top: 20px;
 }
