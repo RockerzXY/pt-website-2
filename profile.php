@@ -71,7 +71,6 @@ if (!$link) {
 }
 
 if (isset($_POST['submit'])) {
-
     $title = $_POST['title'];
     $main_text = $_POST['text'];
 
@@ -79,11 +78,14 @@ if (isset($_POST['submit'])) {
 
     $image_path = '';
     
-    if (!empty($_FILES["file"])) {
-        if ((@$_FILES["file"]["type"] == "image/gif") || (@$_FILES["file"]["type"] == "image/jpeg")
-            || (@$_FILES["file"]["type"] == "image/jpg") || (@$_FILES["file"]["type"] == "image/pjpeg")
-            || (@$_FILES["file"]["type"] == "image/x-png") || (@$_FILES["file"]["type"] == "image/png")
-            && (@$_FILES["file"]["size"] < 1024000)) 
+    if (!empty($_FILES["file"]["name"])) {
+        if ((@$_FILES["file"]["type"] == "image/gif") || 
+            (@$_FILES["file"]["type"] == "image/jpeg") ||
+            (@$_FILES["file"]["type"] == "image/jpg") || 
+            (@$_FILES["file"]["type"] == "image/pjpeg") ||
+            (@$_FILES["file"]["type"] == "image/x-png") || 
+            (@$_FILES["file"]["type"] == "image/png") &&
+            (@$_FILES["file"]["size"] < 1024000)) 
         {   
             $file_name = time() . "_" . basename($_FILES["file"]["name"]);
             $target_file = "media/upload/" . $file_name;
@@ -97,8 +99,10 @@ if (isset($_POST['submit'])) {
         } else {
             echo "Неверный формат файла или превышен размер";
         }
+    } else {
+        echo "Файл не загружен, пост будет сохранен без изображения.";
     }
-
+    
     $sql = "INSERT INTO posts (title, main_text, image_path) VALUES ('$title', '$main_text', '$image_path')";
     if (!mysqli_query($link, $sql)) {
         die("Не удалось добавить пост");
