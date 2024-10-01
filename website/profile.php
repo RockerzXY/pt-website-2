@@ -85,16 +85,16 @@ if (isset($_POST['submit'])) {
             (@$_FILES["file"]["type"] == "image/pjpeg") ||
             (@$_FILES["file"]["type"] == "image/x-png") || 
             (@$_FILES["file"]["type"] == "image/png") &&
-            (@$_FILES["file"]["size"] < 1024000)) 
+            (@$_FILES["file"]["size"] < 10240000)) 
         {   
             $file_name = time() . "_" . basename($_FILES["file"]["name"]);
-            $target_file = "media/upload/" . $file_name;
-
-            if (move_uploaded_file($_FILES["file"]["tmp_name"], $target_file)) {
-                $image_path = $target_file;
-                echo "Загружено в: " . $target_file;
+            $targetPath = 'media/upload/' . $file_name;
+    
+            if (move_uploaded_file($_FILES['file']['tmp_name'], $targetPath)) {
+                echo "Файл загружен успешно.";
+                $image_path = $targetPath;
             } else {
-                echo "Загрузка не удалась";
+                echo "Ошибка: Загрузка не удалась. Проверьте права на запись в директории.";
             }
         } else {
             echo "Неверный формат файла или превышен размер";

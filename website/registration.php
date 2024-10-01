@@ -40,8 +40,6 @@ if (!$link) {
 }
 
 
-
-
 if (isset($_POST['submit'])) {
     $email = $_POST['email'];
     $username = $_POST['login'];
