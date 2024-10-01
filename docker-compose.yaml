@@ -1,0 +1,41 @@
+services:
+  web:
+    build: .
+    container_name: website
+    depends_on:
+      - db
+    volumes:
+      - ./website:/var/www/html
+      - ./log/apache:/var/log/apache2
+    ports:
+      - "8080:80"
+    environment:
+      DB_HOST: db
+      DB_USER: root
+      DB_PASSWORD: admin
+      DB_NAME: site
+    networks:
+      network:
+        ipv4_address: 10.10.10.2
+
+  db:
+    image: mariadb:10.5
+    container_name: db
+    environment:
+      MYSQL_ROOT_PASSWORD: admin
+      MYSQL_DATABASE: sit
+    volumes:
+      - db_data:/var/lib/mysql
+    networks:
+      network:
+        ipv4_address: 10.10.10.3
+
+networks:
+  network:
+    driver: bridge
+    ipam:
+      config:
+        - subnet: 10.10.10.0/24
+
+volumess:
+  db_data:

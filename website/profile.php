@@ -65,7 +65,7 @@
 <?php
 require_once('db.php');
 
-$link = mysqli_connect('127.0.0.1', 'root', 'debian', 'first');
+$link = mysqli_connect('db', 'root', 'admin', 'site');
 if (!$link) {
     die("Ошибка соединения: " . mysqli_connect_error());
 }

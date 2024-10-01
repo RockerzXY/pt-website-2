@@ -1,9 +1,9 @@
 <?php
 
-$servername = "127.0.0.1";
+$servername = "db";
 $username = "root";
-$password = "debian";
-$dbName = "first";
+$password = "admin";
+$dbName = "site";
 
 $link = mysqli_connect($servername, $username, $password);
 if (!$link) {

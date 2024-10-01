@@ -24,7 +24,7 @@
             <?php
             } else {
                 echo "<h1>Ваши посты</h1>";
-                $link = mysqli_connect('127.0.0.1', 'root', 'debian', 'first');
+                $link = mysqli_connect('db', 'root', 'admin', 'site');
                 if (!$link) {
                     die("Ошибка подключения к базе данных: " . mysqli_connect_error());
                 }
