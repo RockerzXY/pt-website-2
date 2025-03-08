@@ -6,7 +6,7 @@
 Для развёртывания приложения выполните следующие шаги:
 1. Клонируйте репозиторий
   ```sh
-  git clone https://github.com/RockerzXY/pt-website
+  git clone https://github.com/RockerzXY/pt-website-2
   cd pt-website
   ```
 2. Запустите контейнеры с помощью docker compose:
